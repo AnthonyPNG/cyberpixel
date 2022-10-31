@@ -29,7 +29,6 @@ CREATE TABLE `user` (
   `mail` varchar(45) NOT NULL,
   `addresse` varchar(45) NOT NULL,
   `estconnecte` tinyint DEFAULT NULL,
-  `droit` varchar(45) DEFAULT NULL,
   `role` varchar(45) NOT NULL,
   `passer_commande` tinyint DEFAULT NULL,
   `payer_commande` tinyint DEFAULT NULL,
