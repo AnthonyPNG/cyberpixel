@@ -7,7 +7,7 @@
 	<title>Accueil</title>
 	<link rel="shortcut icon" type="png" href="img/logo.png"/>
 	<style>
-		<%@include file="style.css"%>
+		<%@include file="/style.css"%>
 	</style>
 </head>
 
@@ -21,7 +21,7 @@
 			<h3>
 				Découvrez dans notre boutique nos divers produits de gaming!
 			</h3>
-			<button class="hero-btn" onclick="">VOIR LES PRODUITS</button>
+			<a class="hero-btn" href="/Projet-JEE/boutique">VOIR LES PRODUITS</a>
 		</div>
 	</div>
 </body>

@@ -29,12 +29,11 @@ CREATE TABLE `user` (
   `mail` varchar(45) NOT NULL,
   `addresse` varchar(45) NOT NULL,
   `estconnecte` tinyint DEFAULT NULL,
-  `droit` varchar(45) DEFAULT NULL,
   `role` varchar(45) NOT NULL,
   `passer_commande` tinyint DEFAULT NULL,
   `payer_commande` tinyint DEFAULT NULL,
   PRIMARY KEY (`idclient`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

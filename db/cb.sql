@@ -26,9 +26,9 @@ CREATE TABLE `cb` (
   `num` int NOT NULL,
   `date` int DEFAULT NULL,
   `cryptogramme` int DEFAULT NULL,
-  `solde` int DEFAULT NULL,
+  `solde` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (`num`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

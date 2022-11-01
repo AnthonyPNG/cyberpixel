@@ -8,16 +8,16 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Accueil
+ * Servlet implementation class Boutique
  */
-@WebServlet("/Accueil")
-public class Accueil extends HttpServlet {
+@WebServlet("/Boutique")
+public class Boutique extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * Default constructor. 
      */
-    public Accueil() {
+    public Boutique() {
         // TODO Auto-generated constructor stub
     }
 
@@ -25,7 +25,7 @@ public class Accueil extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		this.getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/boutique.jsp").forward(request, response);
 	}
 
 	/**
@@ -33,6 +33,7 @@ public class Accueil extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

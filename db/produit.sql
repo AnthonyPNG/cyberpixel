@@ -23,13 +23,13 @@ DROP TABLE IF EXISTS `produit`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `produit` (
-  `nom` int NOT NULL,
-  `quantite` varchar(45) DEFAULT NULL,
-  `prix` int NOT NULL,
-  `discription` varchar(10000) DEFAULT NULL,
-  `idproduit` varchar(45) NOT NULL,
+  `nom` varchar(45) DEFAULT NULL,
+  `quantite` int NOT NULL,
+  `prix` decimal(10,2) NOT NULL,
+  `description` varchar(10000) DEFAULT NULL,
+  `idproduit` int NOT NULL,
   PRIMARY KEY (`idproduit`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
