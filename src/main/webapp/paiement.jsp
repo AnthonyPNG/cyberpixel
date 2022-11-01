@@ -168,21 +168,21 @@
 <script type="text/javascript">
 function alertAbandon() {
 	swal({
-		  title: "Are you sure?",
-		  text: "Once deleted, you will not be able to recover this imaginary file!",
+		  title: "ATTENTION !",
+		  text: "Etes-vous sûr de vouloir abandonner votre paiement ? Vous ne pourrez plus revenir en arrière.",
 		  icon: "warning",
 		  buttons: true,
 		  dangerMode: true,
 		})
 		.then((willDelete) => {
 		  if (willDelete) {
-		    swal("Poof! Your imaginary file has been deleted!", {
-		      icon: "success",
+		    swal("Vous avez bien annulé votre paiement !", {
+		      icon: "error",
 		    });
 		  } else {
-		    swal("Your imaginary file is safe!");
+		    swal("Vous êtes revenus en arrière!");
 		  }
-		});
+	});
 }
 </script>
 </html>
