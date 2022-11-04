@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -13,7 +14,10 @@
 		<h1>SE CONNECTER</h1>
 		
 		<div>
-			<form get="post" action="">
+			<c:if test="${not empty errConnexion}">
+				<p><c:out value="${errConnexion}" /></p>
+			</c:if>
+			<form method="post" action="Connexion">
 				<p>Mail</p>
 				<input type="email" name="mail" />
 				

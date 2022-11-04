@@ -5,27 +5,32 @@
 	padding: 0;
 }
 
+/* Header (cf Figma) */
 h1 {
 	font-family: 'Montserrat', sans-serif;
 	font-size: 72px; 
 }
 
+/* title1 */
 h2 {
 	font-family: 'Montserrat', sans-serif;
 	font-size: 24px; 
 }
 
+/* title2 */
 h3 {
 	font-family: 'Poppins', sans-serif;
 	font-size: 24px; 
 }
 
+/* body-highlight */
 span {
 	font-family: 'Poppins', sans-serif;
 	font-weight: bold;
 	font-size: 24px; 
 }
 
+/* body */
 p {
 	font-family: 'Poppins', sans-serif;
 	font-size: 24px; 

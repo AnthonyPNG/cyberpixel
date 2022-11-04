@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +14,10 @@
 		<h1>S'INSCRIRE</h1>
 		
 		<div>
-			<form get="post" action="">
+			<c:if test="${not empty errInscription}">
+				<p><c:out value="${errInscription}" /></p>
+			</c:if>
+			<form method="post" action="Inscription">
 				<p>Nom</p>
 				<input type="text" name="nom" />
 				
@@ -33,11 +37,11 @@
 				<input type="password" name="mdp2" />
 				
 				</br>
-				<button class="hero-btn" type="submit">SE CONNECTER</button>
+				<button class="hero-btn" type="submit">S'INSCRIRE</button>
 				
 				<div>
 					<p>Vous avez déjà un compte ?</p>
-					<a href="/Projet-JEE/connexion"><p>S'inscrire</p></a>
+					<a href="/Projet-JEE/connexion"><p>Se connecter</p></a>
 				</div>				
 				
 			</form>

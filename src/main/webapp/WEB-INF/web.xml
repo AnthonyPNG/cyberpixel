@@ -42,6 +42,15 @@
   </servlet-mapping>
   
   <servlet>
+    <servlet-name>Deconnexion</servlet-name>
+    <servlet-class>com.cyp.servlets.Deconnexion</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Deconnexion</servlet-name>
+    <url-pattern>/deconnexion</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
     <servlet-name>Inscription</servlet-name>
     <servlet-class>com.cyp.servlets.Inscription</servlet-class>
   </servlet>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Nov 2, 2022, 12:09:31 PM by Hibernate Tools 5.4.33.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class catalog="cyberpixel" name="com.cyp.models.User" optimistic-lock="none" table="user">
+        <id name="idclient" type="java.lang.Integer">
+            <column name="idclient"/>
+            <generator class="identity"/>
+        </id>
+        <property name="nom" type="string">
+            <column length="45" name="nom" not-null="true"/>
+        </property>
+        <property name="prenom" type="string">
+            <column length="45" name="prenom" not-null="true"/>
+        </property>
+        <property name="mail" type="string">
+            <column length="45" name="mail" not-null="true"/>
+        </property>
+        <property name="adresse" type="string">
+            <column length="45" name="adresse" not-null="true"/>
+        </property>
+        <property name="estconnecte" type="java.lang.Byte">
+            <column name="estconnecte"/>
+        </property>
+        <property name="role" type="string">
+            <column length="45" name="role" not-null="true"/>
+        </property>
+        <property name="passerCommande" type="byte">
+            <column name="passer_commande" not-null="true"/>
+        </property>
+        <property name="payerCommande" type="byte">
+            <column name="payer_commande" not-null="true"/>
+        </property>
+        <property name="mdp" type="string">
+            <column length="45" name="mdp" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

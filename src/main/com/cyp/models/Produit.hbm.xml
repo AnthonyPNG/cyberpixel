@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Nov 2, 2022, 9:08:10 PM by Hibernate Tools 5.4.33.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class catalog="cyberpixel" name="com.cyp.models.Produit" optimistic-lock="none" table="produit">
+        <id name="idproduit" type="java.lang.Integer">
+            <column name="idproduit"/>
+            <generator class="identity"/>
+        </id>
+        <property name="nom" type="string">
+            <column length="100" name="nom"/>
+        </property>
+        <property name="prix" type="big_decimal">
+            <column name="prix" not-null="true" precision="10"/>
+        </property>
+        <property name="quantite" type="int">
+            <column name="quantite" not-null="true"/>
+        </property>
+        <property name="description" type="string">
+            <column length="10000" name="description"/>
+        </property>
+        <property name="url" type="string">
+            <column length="10000" name="url"/>
+        </property>
+    </class>
+</hibernate-mapping>
