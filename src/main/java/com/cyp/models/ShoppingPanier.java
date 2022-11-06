@@ -4,50 +4,58 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingPanier {
-	public List<ArticlePanier> items;
-	public double prixTotal;
+	private List<ArticlePanier> articles;
 	
 	public ShoppingPanier() {
-		items = new ArrayList<ArticlePanier>();
-		prixTotal = 0;
+		setArticles(new ArrayList<ArticlePanier>());
+	}
+	
+	public List<ArticlePanier> getArticles() {
+		return articles;
+	}
+
+	public void setArticles(List<ArticlePanier> articles) {
+		this.articles = articles;
 	}
 	
 	public void ajouterProduit(Produit p) {
 		boolean articlePresent = false;
-		for (ArticlePanier item : items) {
-			if (item.produit.getNom() == p.getNom()) {
-				item.setQuantite(item.getQuantite()+1);
+		for (ArticlePanier article : getArticles()) {
+			if (article.produit.getNom().equals(p.getNom())) {
+				article.setQuantite(article.getQuantite()+1);
 				articlePresent = true;
 			}
 		}
 		
 		if (!articlePresent) {
-			items.add(new ArticlePanier(p));
+			getArticles().add(new ArticlePanier(p));
 		}
-		this.setPrixTotal(this.getPrixTotal());
 	}
 	
 	public void retirerProduit(Produit p) {
-		for (ArticlePanier item : items) {
-			if (item.produit.getNom() == p.getNom()) {
-				item.setQuantite(item.getQuantite()-1);
-				if (item.getQuantite() == 0) {
-					items.remove(item);
-				}
+		ArticlePanier a = null;
+		for (ArticlePanier article : getArticles()) {
+			if (article.produit.getNom().equals(p.getNom())) {
+				article.setQuantite(article.getQuantite()-1);
+				a = article;
+				break;
 			}
 		}
-		this.setPrixTotal(this.getPrixTotal());
-	}
-	
-	public void setPrixTotal(double prix) {
-		this.prixTotal = prix;
-	}
-	
-	public double getPrixTotal() {
-		this.prixTotal = 0;
-		for (ArticlePanier item : items) {
-			this.prixTotal += item.produit.getPrix() * item.getQuantite();
+		
+		if (articles.get(articles.indexOf(a)).getQuantite() == 0) {
+			articles.remove(a);
 		}
-		return this.prixTotal;
+	}
+
+	public void supprimerProduit(Produit p) {
+		ArticlePanier a = null;
+		for (ArticlePanier article : getArticles()) {
+			if (article.produit.getNom().equals(p.getNom())) {
+				a = article;
+				break;
+			}
+		}
+		
+		articles.remove(a);
 	}
 }

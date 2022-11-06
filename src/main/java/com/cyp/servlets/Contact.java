@@ -1,37 +1,31 @@
 package com.cyp.servlets;
 
 import java.io.IOException;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class Deconnexion
+ * Servlet implementation class Contact
  */
-@WebServlet("/Deconnexion")
-public class Deconnexion extends HttpServlet {
+@WebServlet("/Contact")
+public class Contact extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * Default constructor. 
      */
-    public Deconnexion() {
+    public Contact() {
         // TODO Auto-generated constructor stub
     }
 
 	/**
-	 * Deconnexion de l'utilisateur
-	 * Ferme la session
+	 * Affiche la page contact
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		request.getSession(false);
-		session.invalidate();
-		response.sendRedirect("/Projet-JEE/boutique");
+		this.getServletContext().getRequestDispatcher("/contact.jsp").forward(request, response);
 	}
 
 	/**

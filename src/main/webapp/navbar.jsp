@@ -11,7 +11,7 @@
 			<ul>
 				<li><a href="/Projet-JEE/"><h2>ACCUEIL</h2></a></li>
 				<li><a href="/Projet-JEE/boutique"><h2>BOUTIQUE</h2></a></li>
-				<li><a href="/Projet-JEE/"><h2>CONTACT</h2></a></li>
+				<li><a href="/Projet-JEE/contact"><h2>CONTACT</h2></a></li>
 				<li><a href="/Projet-JEE/deconnexion"><h2>SE DECONNECTER</h2></a></li>
 			</ul>
 		</c:when>
@@ -19,7 +19,7 @@
 			<ul>
 				<li><a href="/Projet-JEE/"><h2>ACCUEIL</h2></a></li>
 				<li><a href="/Projet-JEE/boutique"><h2>BOUTIQUE</h2></a></li>
-				<li><a href="/Projet-JEE/"><h2>CONTACT</h2></a></li>
+				<li><a href="/Projet-JEE/contact"><h2>CONTACT</h2></a></li>
 				<li><a href="/Projet-JEE/connexion"><h2>SE CONNECTER</h2></a></li>
 			</ul>
 		</c:otherwise>

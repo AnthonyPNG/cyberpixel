@@ -6,8 +6,11 @@
             <column name="idcb"/>
             <generator class="identity"/>
         </id>
-        <property name="num" type="int">
+        <property name="num" type="long">
             <column name="num" not-null="true"/>
+        </property>
+        <property name="nom" type="string">
+            <column length="100" name="nom" not-null="true"/>
         </property>
         <property name="date" type="string">
             <column length="10" name="date" not-null="true"/>

@@ -26,12 +26,27 @@
 						<p><c:out value="${prod.description}" /></p>
 						<p><c:out value="${prod.prix}€" /></p>
 						<p><c:out value="${prod.quantite}" /></p>
+						<c:if test="${prod.quantite == 0}">
+							<h1>EXPIRE</h1>
+						</c:if>
 						
 						<c:choose>
 							<c:when test="${not empty connecte}">
-								<form method="get" action="Panier">
-									<button name="ajouterProd" value="${prod.idproduit}">AJOUTER AU PANIER</button>
-								</form>
+								<c:choose>								
+									<c:when test="${connecte.passerCommande == 0}">
+										<button name="ajouterProd" value="${prod.idproduit}" disabled>AJOUTER AU PANIER</button>
+									</c:when>
+									
+									<c:when test="${prod.quantite == 0}">
+										<button name="ajouterProd" value="${prod.idproduit}" disabled>AJOUTER AU PANIER</button>
+									</c:when>
+									
+									<c:otherwise>																	
+										<form method="get" action="Panier">
+											<button name="ajouterProd" value="${prod.idproduit}">AJOUTER AU PANIER</button>
+										</form>								
+									</c:otherwise>							
+								</c:choose>
 							</c:when>
 							
 							<c:otherwise>

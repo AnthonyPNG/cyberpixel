@@ -1,9 +1,11 @@
 package com.cyp.dao;
 
+import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.cyp.models.Cb;
 import com.cyp.models.Produit;
 import com.cyp.models.User;
 
@@ -28,7 +30,7 @@ public class DAOBase {
 			while (result.next()) {
 				int id = result.getInt("idproduit");
 				String nom = result.getString("nom");
-				double prix = result.getDouble("prix");
+				BigDecimal prix = result.getBigDecimal("prix");
 				int quantite = result.getInt("quantite");
 				String description = result.getString("description");
 				String url = result.getString("url");
@@ -64,8 +66,38 @@ public class DAOBase {
 			
 			if (result.next()) {
 				p = new Produit();
+				p.setIdproduit(result.getInt("idproduit"));
 				p.setNom(result.getString("nom"));
-				p.setPrix(result.getInt("prix"));
+				p.setPrix(result.getBigDecimal("prix"));
+				p.setQuantite(result.getInt("quantite"));
+				p.setDescription(result.getString("description"));
+			}
+		} catch (SQLException e) {
+			throw new DAOException("Impossible de communiquer avec la base de données");
+		}
+		
+		return p;
+	}
+	
+	public Produit getProduit(String nom) throws DAOException {
+		Connection connexion = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet result = null;
+		Produit p = null;
+		
+		try {
+			connexion = daoFactory.getConnection();
+			preparedStatement = connexion.prepareStatement("SELECT * FROM produit WHERE nom = ?");
+			preparedStatement.setString(1, nom);
+			result = preparedStatement.executeQuery();
+			
+			if (result.next()) {
+				p = new Produit();
+				p.setIdproduit(result.getInt("idproduit"));
+				p.setNom(result.getString("nom"));
+				p.setPrix(result.getBigDecimal("prix"));
+				p.setQuantite(result.getInt("quantite"));
+				p.setDescription(result.getString("description"));
 			}
 		} catch (SQLException e) {
 			throw new DAOException("Impossible de communiquer avec la base de données");
@@ -165,5 +197,66 @@ public class DAOBase {
 		}
 		
 		return u;
+	}
+	
+	public Cb getCb(String nom, Long num, String date, int cvv) throws DAOException {
+		Cb card = null;
+		Connection connexion = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet result = null;
+		
+		try {
+			connexion = daoFactory.getConnection();
+			preparedStatement = connexion.prepareStatement("SELECT * FROM cb WHERE num = ? AND nom = ? AND date = ? AND cryptogramme = ?");
+			preparedStatement.setLong(1, num);
+			preparedStatement.setString(2, nom);
+			preparedStatement.setString(3, date);
+			preparedStatement.setInt(4, cvv);
+			result = preparedStatement.executeQuery();
+			
+			if (result.next()) {
+				result.first();
+				card = new Cb();
+				card.setNum(result.getLong("num"));
+				card.setNom(result.getString("nom"));
+				card.setDate(result.getString("date"));
+				card.setCryptogramme(result.getInt("cryptogramme"));
+				card.setSolde(result.getBigDecimal("solde"));
+			}
+		} catch (SQLException e) {
+			throw new DAOException("Impossible de communiquer avec la base de données");
+		}
+		
+		return card;
+	}
+	
+	public void updateCbSolde(Cb cb) throws DAOException {
+		Connection connexion = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connexion = daoFactory.getConnection();
+			preparedStatement = connexion.prepareStatement("UPDATE cb SET solde = ? WHERE num = ?");
+			preparedStatement.setBigDecimal(1, cb.getSolde());
+			preparedStatement.setLong(2, cb.getNum());
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			throw new DAOException("Impossible de communiquer avec la base de données");
+		}
+	}
+	
+	public void updateProduitQuantite(Produit p) throws DAOException {
+		Connection connexion = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connexion = daoFactory.getConnection();
+			preparedStatement = connexion.prepareStatement("UPDATE produit SET quantite = ? WHERE nom = ?");
+			preparedStatement.setInt(1, p.getQuantite());
+			preparedStatement.setString(2, p.getNom());
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			throw new DAOException("Impossible de communiquer avec la base de données");
+		}
 	}
 }

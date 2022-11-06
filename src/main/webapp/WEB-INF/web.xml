@@ -33,6 +33,15 @@
   </servlet-mapping>
   
   <servlet>
+    <servlet-name>Contact</servlet-name>
+    <servlet-class>com.cyp.servlets.Contact</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Contact</servlet-name>
+    <url-pattern>/contact</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
     <servlet-name>Connexion</servlet-name>
     <servlet-class>com.cyp.servlets.Connexion</servlet-class>
   </servlet>

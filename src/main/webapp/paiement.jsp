@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -114,7 +115,7 @@
 			<div class="row">
 			  <div class="col-75">
 			    <div class="container">
-			      <form action="">			
+			      <form method="post" action="Paiement">			
 			          <div class="col-50">
 			            <h1>Paiement en ligne</h1>
 			            <div class="icon-container">
@@ -123,17 +124,22 @@
 			              <i class="fa fa-cc-mastercard" style="color:red;"></i>
 			              <i class="fa fa-cc-discover" style="color:orange;"></i>
 			            </div>
+			            <c:if test="${not empty errPaiement}">
+			            	<c:out value="${errPaiement}" />
+			            </c:if>
+			            
 			            <label for="nom">Nom sur la carte</label>
 			            <input type="text" name="nom">
+			            
 			            <label for="num">N° de carte</label>
 			            <input type="text" name="num">
-			            <label for="expmonth">Exp Month</label>
-			            <input type="number" name="mois">
+			            
 			            <div class="row">
 			              <div class="col-50">
-			                <label for="expyear">Exp Year</label>
-			                <input type="number" name="year">
+			                <label for="date">Date d'expiration</label>
+			                <input type="text" name="date">
 			              </div>
+			              
 			              <div class="col-50">
 			                <label for="cvv">Cryptogramme visuel</label>
 			                <input type="number" name="cvv">
@@ -142,7 +148,7 @@
 			          </div>			          
 			        </div>
 			        
-			        <input type="submit" value="Valider" class="btn">
+			        <input type="submit" value="Valider">
 			        
 			      </form>
 			      <button onclick="alertAbandon();">Abandonner</button>
@@ -151,13 +157,13 @@
 			  
 			  <div class="col-25">
 			    <div class="container">
-			      <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
-			      <p>Product 1 <span class="price">$15</span></p>
-			      <p>Product 2 <span class="price">$5</span></p>
-			      <p>Product 3 <span class="price">$8</span></p>
-			      <p>Product 4 <span class="price">$2</span></p>
+			      <h4>Panier<span class="price" style="color:black"><i class="fa fa-shopping-cart"></i></span></h4>
+			      <c:forEach items="${paniers.articles}" var="panier">
+						<span><c:out value="${panier.nom}" /> <span class="price"><c:out value="${panier.prix * panier.quantite}€" /></span></span>
+						<p><c:out value="${panier.prix}€ × ${panier.quantite}" /></p>
+					</c:forEach>
 			      <hr>
-			      <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
+			      <p>Total <span class="price" style="color:black"><c:out value="${prixTotal}€" /></span></p>
 			    </div>
 			  </div>
 			</div>

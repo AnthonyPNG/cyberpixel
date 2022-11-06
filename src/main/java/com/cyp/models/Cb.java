@@ -9,7 +9,8 @@ import java.math.BigDecimal;
 public class Cb implements java.io.Serializable {
 
 	private Integer idcb;
-	private int num;
+	private Long num;
+	private String nom;
 	private String date;
 	private int cryptogramme;
 	private BigDecimal solde;
@@ -17,8 +18,9 @@ public class Cb implements java.io.Serializable {
 	public Cb() {
 	}
 
-	public Cb(int num, String date, int cryptogramme, BigDecimal solde) {
+	public Cb(Long num, String nom, String date, int cryptogramme, BigDecimal solde) {
 		this.num = num;
+		this.nom = nom;
 		this.date = date;
 		this.cryptogramme = cryptogramme;
 		this.solde = solde;
@@ -32,12 +34,20 @@ public class Cb implements java.io.Serializable {
 		this.idcb = idcb;
 	}
 
-	public int getNum() {
+	public Long getNum() {
 		return this.num;
 	}
 
-	public void setNum(int num) {
+	public void setNum(Long num) {
 		this.num = num;
+	}
+	
+	public String getNom() {
+		return this.nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 
 	public String getDate() {
