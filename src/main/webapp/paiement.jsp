@@ -105,7 +105,6 @@
 		  }
 		}
 	</style>
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body>
@@ -148,10 +147,9 @@
 			          </div>			          
 			        </div>
 			        
-			        <input type="submit" value="Valider">
-			        
+			        <input type="submit" name="action" value="Valider">
+			        <input type="submit" name="action" value="Abandonner">
 			      </form>
-			      <button onclick="alertAbandon();">Abandonner</button>
 			    </div>
 			  </div>
 			  
@@ -170,25 +168,4 @@
 		</div>
 	</div>
 </body>
-
-<script type="text/javascript">
-function alertAbandon() {
-	swal({
-		  title: "ATTENTION !",
-		  text: "Etes-vous sûr de vouloir abandonner votre paiement ? Vous ne pourrez plus revenir en arrière.",
-		  icon: "warning",
-		  buttons: true,
-		  dangerMode: true,
-		})
-		.then((willDelete) => {
-		  if (willDelete) {
-		    swal("Vous avez bien annulé votre paiement !", {
-		      icon: "error",
-		    });
-		  } else {
-		    swal("Vous êtes revenus en arrière!");
-		  }
-	});
-}
-</script>
 </html>

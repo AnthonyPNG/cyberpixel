@@ -6,46 +6,61 @@
 <head>
 	<meta charset="UTF-8">
 	<title>S'inscrire</title>
+	<style>
+		<%@include file="/style.css"%>
+	</style>
 </head>
 
 <body>
-	<div class="header">
-		<%@ include file="navbar.jsp" %>
-		<h1>S'INSCRIRE</h1>
-		
-		<div>
-			<c:if test="${not empty errInscription}">
-				<p><c:out value="${errInscription}" /></p>
-			</c:if>
+	<section class="header">
+	<%@ include file="navbar.jsp" %>
+	<div class="text-box">
+		<div class="signup-form">		
 			<form method="post" action="Inscription">
-				<p>Nom</p>
-				<input type="text" name="nom" />
+				<h1>S'INSCRIRE</h1>
+				<p class="hint-text">Créez votre compte. C'est gratuit et cela ne prend qu'une minute</p>
+			
+				<c:if test="${not empty errInscription}">
+					<p><c:out value="${errInscription}" /></p>
+				</c:if>
 				
-				<p>Prénom</p>
-				<input type="text" name="prenom" />
+				<div class="form-group">
+					<input type="text" class="form-control" name="nom" placeholder="Nom" required="required">
+				</div>
 				
-				<p>Adresse</p>
-				<input type="text" name="adresse" />
+				<div class="form-group">
+					<input type="text" class="form-control" name="prenom" placeholder="Prénom" required="required">
+				</div>
 				
-				<p>Mail</p>
-				<input type="email" name="mail" />
+				<div class="form-group">
+					<input type="text" class="form-control" name="adresse" placeholder="Adresse" required="required">
+				</div>
 				
-				<p>Mot de passe</p>
-				<input type="password" name="mdp1" />
+				<div class="form-group">
+					<input type="email" class="form-control" name="mail" placeholder="Email" required="required">
+				</div>
 				
-				<p>Confirmer votre mot de passe</p>
-				<input type="password" name="mdp2" />
+				<div class="form-group">
+					<input type="password" class="form-control" name="mdp1" placeholder="Mot de passe" required="required">
+				</div>
 				
-				</br>
-				<button class="hero-btn" type="submit">S'INSCRIRE</button>
+				<div class="form-group">
+					<input type="password" class="form-control" name="mdp2" placeholder="Confirmez votre mot de passe" required="required">
+				</div>
 				
-				<div>
-					<p>Vous avez déjà un compte ?</p>
-					<a href="/Projet-JEE/connexion"><p>Se connecter</p></a>
-				</div>				
-				
-			</form>
-		</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-secondary btn-sm btn-block">S'INSCRIRE</button>
+				</div>
+			</form>			
+					
+			<div class="text-center">
+				<p>
+					Vous avez déjà un compte? 
+					<a href="/Projet-JEE/connexion">Se Connecter</a>
+				</p>
+			</div>
+		</div>	
 	</div>
+	</section>
 </body>
 </html>

@@ -13,8 +13,6 @@
 		</c:when>
 		
 		<c:when test="${not empty connecte}">
-			<c:out value="passer commande : ${connecte.passerCommande}" />
-			<c:out value="payer commande : ${connecte.payerCommande}" />
 			<c:choose>
 				<c:when test="${connecte.passerCommande == 0}">
 					<p>Vous ne pouvez pas passer de commandes.</p>

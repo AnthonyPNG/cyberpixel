@@ -77,4 +77,13 @@
     <url-pattern>/paiement</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>PaiementValide</servlet-name>
+    <servlet-class>com.cyp.servlets.PaiementValide</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PaiementValide</servlet-name>
+    <url-pattern>/paiementValide</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

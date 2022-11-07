@@ -51,34 +51,42 @@ public class Paiement extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, NumberFormatException {
 		HttpSession session = request.getSession();
-		String nom = request.getParameter("nom");
-		Long num = Long.parseLong(request.getParameter("num"));
-		String date = request.getParameter("date");
-		int cryptogramme = Integer.parseInt(request.getParameter("cvv"));
+		String action = request.getParameter("action");
 		
 		try {
-			if (nom.equals("") || request.getParameter("num").equals("") || date.equals("") || 
-					request.getParameter("cvv").equals("") ) throw new Exception("Veuillez saisir tous les champs.");
-			
-			Cb cb = daoBase.getCb(nom, num, date, cryptogramme);
-			if (cb != null) {
-				BigDecimal prix = (BigDecimal) session.getAttribute("prixTotal");
+			if (action.equals("Abandonner")) {
+				response.sendRedirect("/Projet-JEE/boutique");
+			} else if (action.equals("Valider")) {
+				String nom = request.getParameter("nom");
+				Long num = Long.parseLong(request.getParameter("num"));
+				String date = request.getParameter("date");
+				int cryptogramme = Integer.parseInt(request.getParameter("cvv"));
 				
-				if (cb.getSolde().compareTo(prix) == -1) {
-					throw new Exception("Vous ne pouvez pas effectuer votre paiement car votre solde est inférieur au prix à payer !");
-				} else {
-					cb.setSolde(cb.getSolde().subtract(prix));
-					daoBase.updateCbSolde(cb);
+				if (nom.equals("") || request.getParameter("num").equals("") || date.equals("") || 
+						request.getParameter("cvv").equals("") ) throw new Exception("Veuillez saisir tous les champs.");
+				
+				Cb cb = daoBase.getCb(nom, num, date, cryptogramme);
+				if (cb != null) {
+					BigDecimal prix = (BigDecimal) session.getAttribute("prixTotal");
 					
-					ShoppingPanier panier = (ShoppingPanier) session.getAttribute("paniers");
-					for (ArticlePanier article : panier.getArticles()) {
-						Produit p = daoBase.getProduit(article.produit.getNom());
-						p.setQuantite(p.getQuantite() - article.getQuantite());
-						daoBase.updateProduitQuantite(p);
+					if (cb.getSolde().compareTo(prix) == -1) {
+						throw new Exception("Vous ne pouvez pas effectuer votre paiement car votre solde est inférieur au prix à payer !");
+					} else {
+						cb.setSolde(cb.getSolde().subtract(prix));
+						daoBase.updateCbSolde(cb);
+						
+						ShoppingPanier panier = (ShoppingPanier) session.getAttribute("paniers");
+						for (ArticlePanier article : panier.getArticles()) {
+							Produit p = daoBase.getProduit(article.produit.getNom());
+							p.setQuantite(p.getQuantite() - article.getQuantite());
+							daoBase.updateProduitQuantite(p);
+						}
 					}
+					
+					response.sendRedirect("/Projet-JEE/paiementValide");
+				} else {
+					throw new DAOException("Les informations fournies ne correspondent pas !");
 				}
-			} else {
-				throw new DAOException("Les informations fournies ne correspondent pas !");
 			}
 		} catch(NumberFormatException e) {
 			request.setAttribute("errPaiement", "Veuillez entrer un N° de carte et/ou un cryptogramme correct !");

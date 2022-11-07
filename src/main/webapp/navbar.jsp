@@ -24,5 +24,4 @@
 			</ul>
 		</c:otherwise>
 	</c:choose>
-
 </div>
