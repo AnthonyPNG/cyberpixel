@@ -6,6 +6,7 @@
 </style>
 
 <div class="nav-links" id="navLinks">
+	<img alt="logo" src="">
 	<c:choose>
 		<c:when test="${not empty connecte}">
 			<ul>

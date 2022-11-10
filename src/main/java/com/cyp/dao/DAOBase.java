@@ -118,6 +118,7 @@ public class DAOBase {
 			result = statement.executeQuery("SELECT * FROM user WHERE role = 'client'");
 			
 			while (result.next()) {
+				int id = result.getInt("idclient");
 				String nom = result.getString("nom");
 				String prenom = result.getString("prenom");
 				String mail = result.getString("mail");
@@ -125,6 +126,7 @@ public class DAOBase {
 				byte payerCommande = result.getByte("payer_commande");
 				
 				User user = new User();
+				user.setIdclient(id);
 				user.setNom(nom);
 				user.setPrenom(prenom);
 				user.setMail(mail);

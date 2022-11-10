@@ -86,4 +86,13 @@
     <url-pattern>/paiementValide</url-pattern>
   </servlet-mapping>
   
+    <servlet>
+    <servlet-name>Client</servlet-name>
+    <servlet-class>com.cyp.servlets.Client</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Client</servlet-name>
+    <url-pattern>/client</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
