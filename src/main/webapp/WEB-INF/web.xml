@@ -86,13 +86,31 @@
     <url-pattern>/paiementValide</url-pattern>
   </servlet-mapping>
   
-    <servlet>
+  <servlet>
     <servlet-name>Client</servlet-name>
     <servlet-class>com.cyp.servlets.Client</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Client</servlet-name>
     <url-pattern>/client</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>Produit</servlet-name>
+    <servlet-class>com.cyp.servlets.Produit</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Produit</servlet-name>
+    <url-pattern>/produit</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>AjouterProduit</servlet-name>
+    <servlet-class>com.cyp.servlets.AjouterProduit</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AjouterProduit</servlet-name>
+    <url-pattern>/ajouterProduit</url-pattern>
   </servlet-mapping>
   
 </web-app>

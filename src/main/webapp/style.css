@@ -107,11 +107,128 @@ nav img {
 	text-align: center;
 }
 
+.register-box{
+	width: 100%;
+	color: #fff;
+	position: fixed;
+	top: 65%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	text-align: center;
+}
+
+/* Boite dinfo */
+.form-control { 
+	height: 40px;
+	box-shadow: none;
+	color: #969fa4;
+	border-radius: 5px 5px 5px 5px;
+}
+
+/* Boite dinfo */
+.signup-form{ 
+	width: 400px; 
+	margin: 0 auto;
+	padding: 30px 0;
+}
+	
+/* Hint text sous register*/
+.signup-form .hint-text{  
+	color: #999;
+	margin-bottom: 30px;
+	text-align: center; 
+}
+
+/* Boite dinfo */
+.signup-form form{  
+	color: #999;
+	border-radius: 3px;
+    margin-bottom: 15px;
+    background: none;
+    box-shadow: 20px 20px 20px 20px rgba(0, 0, 0, 1);
+    padding: 30px;
+}
+
+/* Boite dinfo */
+.signup-form .form-group{ 
+	margin-bottom: 20px;
+	display: flex;
+    justify-content: center;
+}
+
+/* Boutton register et login */  
+.signup-form .btn{    
+	font-size: 16px;
+    font-weight: bold;		
+	min-width: 140px;
+    outline: none !important;
+}
+
+/* Sign in */ 	
+.signup-form a{  
+	color: #fff;
+	text-decoration: underline;
+}
+
+.form-control {
+	width: 70%;
+	border: 1.5px solid #704C88;
+    border-radius: 5px;
+    text-align: left;
+    padding-left: 10px
+}
+
+/* Boutton register/login */
+.btn {
+	background-image: linear-gradient(to right, #2b5876 0%, #4e4376  51%, #2b5876  100%); 
+	text-decoration: none;
+	border: none;
+    margin: 5px 4px;
+    padding: 13px 26px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* Change the direction of the change here */
+.btn:hover {
+    background-position: right center; 
+    color: #fff;
+    text-decoration: none;
+}
+
+.hero-btn{
+	display: inline-block;
+	text-decoration: none;
+	color: #33BEFF;
+	border: 1px solid #33BEFF;
+	padding: 12px 34px;
+	font-size: 13px;
+	background: transparent;
+	position: relative;
+	cursor: pointer;
+}
+
 .text-box h1 {
 	font-size: 45px;
 }
 
-.text-box p {
+.text-box p, .text-box span {
+	margin: 10px 0 40px;
+	font-size: 14px;
+	color: #fff;
+}
+
+.register-box h1 {
+	font-size: 45px;
+}
+
+.register-box p, .register-box span {
 	margin: 10px 0 40px;
 	font-size: 14px;
 	color: #fff;
@@ -152,6 +269,16 @@ nav img {
 }
 
 /* Boutique */
+.btq-box{
+	width: 100%;
+	color: #fff;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	text-align: center;
+}
+
 .actus{
 	width: 100%;
 	margin: auto;
@@ -224,9 +351,9 @@ nav img {
 .product-product-card{
   flex: 0 0 auto;
   width: 250px;
-  height: 450px;
+  height: 570px;
   margin-right: 40px;
-  background-color: chartreuse;
+  background-color: #5362CF;
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -361,7 +488,7 @@ nav img {
 }
 
 .product-card-btn:hover{
-    background: greenyellow;
+    background: #5362CF;
 }
 
 .product-info{
@@ -409,15 +536,15 @@ nav img {
 
 .cart-product-card{
 	flex: 0 0 auto;
-    width: 200px;
-    height: 120px;
+    width: 250px;
+    height: 160px;
 	margin: auto;
-	background-color: chartreuse;
+	background-color: #B057D9;
 	margin-bottom: 10px;
 }
 
 .product-cardbtn{
-	background-color: #1fc521; /* Green */
+  background-color: #6957D9;
   border: none;
   color: white;
   padding: 8px 20px;
@@ -435,103 +562,6 @@ nav img {
     flex: 1 1 auto;
     overflow-y: auto;
     min-height: 100px;
-}
-
-/* Boite dinfo */
-.form-control { 
-	height: 40px;
-	box-shadow: none;
-	color: #969fa4;
-	border-radius: 5px 5px 5px 5px;
-}
-
-/* Boite dinfo */
-.signup-form{ 
-	width: 400px; 
-	margin: 0 auto;
-	padding: 30px 0;
-}
-	
-/* Hint text sous register*/
-.signup-form .hint-text{  
-	color: #999;
-	margin-bottom: 30px;
-	text-align: center; 
-}
-
-/* Boite dinfo */
-.signup-form form{  
-	color: #999;
-	border-radius: 3px;
-    margin-bottom: 15px;
-    background: none;
-    box-shadow: 20px 20px 20px 20px rgba(0, 0, 0, 1);
-    padding: 30px;
-}
-
-/* Boite dinfo */
-.signup-form .form-group{ 
-	margin-bottom: 20px;
-	display: flex;
-    justify-content: center;
-}
-
-/* Boutton register et login */  
-.signup-form .btn{    
-	font-size: 16px;
-    font-weight: bold;		
-	min-width: 140px;
-    outline: none !important;
-}
-
-/* Sign in */ 	
-.signup-form a{  
-	color: #fff;
-	text-decoration: underline;
-}
-
-.form-control {
-	width: 70%;
-	border: 1.5px solid #704C88;
-    border-radius: 5px;
-    text-align: left;
-    padding-left: 10px
-}
-
-/* Boutton register/login */
-.btn {
-	background-image: linear-gradient(to right, #2b5876 0%, #4e4376  51%, #2b5876  100%); 
-	text-decoration: none;
-	border: none;
-    margin: 5px 4px;
-    padding: 13px 26px;
-    text-align: center;
-    text-transform: uppercase;
-    transition: 0.5s;
-    background-size: 200% auto;
-    color: white;            
-    box-shadow: 0 0 20px #eee;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-/* Change the direction of the change here */
-.btn:hover {
-    background-position: right center; 
-    color: #fff;
-    text-decoration: none;
-}
-
-.hero-btn{
-	display: inline-block;
-	text-decoration: none;
-	color: #33BEFF;
-	border: 1px solid #33BEFF;
-	padding: 12px 34px;
-	font-size: 13px;
-	background: transparent;
-	position: relative;
-	cursor: pointer;
 }
 
 /* The switch - the box around the slider */
@@ -606,6 +636,7 @@ input:checked + .slider:before {
 
 .client-btn {
   position: relative;
+  margin-left: 10px;
   width: 50px;
   height: 50px;
   border-radius: 25px;
@@ -659,6 +690,28 @@ spane {
   transition: .3s;
 }
 
+.client-btn-maj {
+  position: relative;
+  top: 10px;
+  margin-right: 10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  border: 2px solid rgb(29, 190, 255);
+  background-color: #fff;
+  cursor: pointer;
+  box-shadow: 0 0 10px #333;
+  overflow: hidden;
+  transition: .3s;
+}
+
+.client-btn-maj:hover {
+  background-color: rgb(245, 207, 207);
+  transform: scale(1.2);
+  box-shadow: 0 0 4px #111;
+  transition: .3s;
+}
+
 table{
   width:100%;
   table-layout: fixed;
@@ -693,4 +746,53 @@ td{
   font-size: 12px;
   color: #fff;
   border-bottom: solid 1px rgba(255,255,255,0.1);
+}
+
+.row {
+	display: -ms-flexbox; /* IE10 */
+	display: flex;
+	-ms-flex-wrap: wrap; /* IE10 */
+	flex-wrap: wrap;
+	margin: 0 -16px;
+}
+		
+.col-25 {
+	-ms-flex: 25%; /* IE10 */
+	flex: 25%;
+}
+		
+.col-50 {
+	-ms-flex: 50%; /* IE10 */
+	flex: 50%;
+}
+		
+.col-75 {
+	-ms-flex: 75%; /* IE10 */
+	flex: 75%;
+}
+		
+.col-25,
+.col-50,
+.col-75 {
+	padding: 0 16px;
+}
+		
+.container {
+	padding: 5px 20px 15px 20px;
+	border-radius: 5px;
+	margin-bottom: 15px;
+	background: none;
+	box-shadow: 20px 20px 5px 5px rgba(0, 0, 0, 1);
+}
+
+.container .form-group{ 
+	margin-bottom: 20px;
+	display: flex;
+    justify-content: center;
+}
+
+.container .hint-text{  
+	color: #999;
+	margin-bottom: 30px;
+	text-align: center; 
 }

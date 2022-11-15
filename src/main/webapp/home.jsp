@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Accueil</title>
-	<link rel="shortcut icon" type="png" href="img/logo.png"/>
+	<link rel="shortcut icon" type="png" href="https://cdn.discordapp.com/attachments/1031949427960725555/1039553476449030174/logo.png"/>
 	<style>
 		<%@include file="/style.css"%>
 	</style>
@@ -21,7 +21,7 @@
 			<h3>
 				Découvrez dans notre boutique nos divers produits de gaming!
 			</h3>
-			<a class="hero-btn" href="/Projet-JEE/boutique">VOIR LES PRODUITS</a>
+			<p><a class="hero-btn" href="/Projet-JEE/boutique">VOIR LES PRODUITS</a></p>
 		</div>
 	</div>
 </body>

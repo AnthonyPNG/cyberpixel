@@ -58,12 +58,14 @@ public class Inscription extends HttpServlet {
 			if (!mdp.equals(checkMdp)) throw new Exception("Ces mots de passe ne correspondent pas. Veuillez réessayer.");
 			else u.setMdp(mdp);
 			daoBase.ajouterUser(u);
+			response.sendRedirect("/Projet-JEE/connexion");
 		} catch (DAOException e) {
 			request.setAttribute("errInscription", e.getMessage());
+			this.getServletContext().getRequestDispatcher("/inscription.jsp").forward(request, response);
 		} catch (Exception e) {
 			request.setAttribute("errInscription", e.getMessage());
-		}
-		this.getServletContext().getRequestDispatcher("/inscription.jsp").forward(request, response);
+			this.getServletContext().getRequestDispatcher("/inscription.jsp").forward(request, response);
+		}		
 	}
 
 }

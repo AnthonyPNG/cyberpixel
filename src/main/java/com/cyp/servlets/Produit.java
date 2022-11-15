@@ -1,6 +1,7 @@
 package com.cyp.servlets;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 
 import com.cyp.dao.DAOBase;
 import com.cyp.dao.DAOException;
@@ -13,17 +14,17 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Client
+ * Servlet implementation class Produit
  */
-@WebServlet("/Client")
-public class Client extends HttpServlet {
+@WebServlet("/Produit")
+public class Produit extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	DAOBase daoBase;
 
     /**
      * Default constructor. 
      */
-    public Client() {
+    public Produit() {
         // TODO Auto-generated constructor stub
     }
     
@@ -37,11 +38,11 @@ public class Client extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			request.setAttribute("clients", daoBase.getListUser());
+			request.setAttribute("produits", daoBase.getListProduit());
 		} catch (DAOException e) {
-			request.setAttribute("errClient", e.getMessage());
+			request.setAttribute("errProduit", e.getMessage());
 		}
-		this.getServletContext().getRequestDispatcher("/client.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/produit.jsp").forward(request, response);
 	}
 
 	/**
@@ -49,29 +50,26 @@ public class Client extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id;
-		int passerCommande;
-		int payerCommande;
 		
 		try {
-			if (request.getParameter("majUser") != null) {
-				id = Integer.parseInt(request.getParameter("majUser"));			
-				if (request.getParameter("passerCmd") == null) passerCommande = 0;
-				else passerCommande = Integer.parseInt(request.getParameter("passerCmd"));
-				if (request.getParameter("payerCmd") == null) payerCommande = 0;
-				else payerCommande = Integer.parseInt(request.getParameter("payerCmd"));
-				System.out.println(id);
-				System.out.println("passer: " + passerCommande);
-				System.out.println("payer: " + payerCommande);
-				daoBase.UpdateDroits(id, passerCommande, payerCommande);
+			if (request.getParameter("majProduit") != null) {
+				id = Integer.parseInt(request.getParameter("majProduit"));
+				if (!request.getParameter("prix").equals("")) {					
+					BigDecimal prix = BigDecimal.valueOf(Double.valueOf(request.getParameter("prix")));
+					daoBase.updatePrixProduit(prix, id);
+				} else {
+					int quantite = Integer.parseInt(request.getParameter("quantite"));
+					daoBase.updateStockProduit(quantite, id);
+				}
 			}
-			if (request.getParameter("supprimerUser") != null) {
-				id = Integer.parseInt(request.getParameter("supprimerUser"));
-				daoBase.removeUser(id);
+			if (request.getParameter("supprimerProduit") != null) {
+				id = Integer.parseInt(request.getParameter("supprimerProduit"));
+				daoBase.removeProduit(id);
 			}
 		} catch (DAOException e) {
-			request.setAttribute("errClient", e.getMessage());
+			request.setAttribute("errProduit", e.getMessage());
 		}
-		response.sendRedirect("/Projet-JEE/client");
+		response.sendRedirect("/Projet-JEE/produit");
 	}
 
 }

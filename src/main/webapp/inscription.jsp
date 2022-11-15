@@ -6,6 +6,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>S'inscrire</title>
+	<link rel="shortcut icon" type="png" href="https://cdn.discordapp.com/attachments/1031949427960725555/1039553476449030174/logo.png"/>
 	<style>
 		<%@include file="/style.css"%>
 	</style>
@@ -14,7 +15,7 @@
 <body>
 	<section class="header">
 	<%@ include file="navbar.jsp" %>
-	<div class="text-box">
+	<div class="register-box">
 		<div class="signup-form">		
 			<form method="post" action="Inscription">
 				<h1>S'INSCRIRE</h1>

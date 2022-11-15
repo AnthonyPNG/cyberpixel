@@ -6,7 +6,7 @@
 	<%@include file="/style.css"%>
 </style>
 
-<div class="jtt" style="width: 25%; float:right; height: 700px; background-color: #8558C2;">
+<div class="jtt" style="width: 30%; float:right; height: 700px; background-color: #8558C2;">
 	<h2>Panier</h2>
 	<c:choose>
 		<c:when test="${not empty errPanier}">
@@ -46,7 +46,7 @@
 							</c:when>
 							
 							<c:otherwise>
-								<a class="payer-btn" href="/Projet-JEE/paiement">PAYER</a>
+								<p><a class="payer-btn" href="/Projet-JEE/paiement">PAYER</a></p>
 							</c:otherwise>
 						</c:choose>
 					</div>				
@@ -56,7 +56,7 @@
 		
 		<c:otherwise>
 			<p>Vous devez vous <span>connecter</span> pour avoir accès à votre panier !</p>
-			<a class="hero-btn" href="/Projet-JEE/connexion">SE CONNECTER</a>
+			<p><a class="hero-btn" href="/Projet-JEE/connexion">SE CONNECTER</a></p>
 		</c:otherwise>
 	</c:choose>
 </div>
