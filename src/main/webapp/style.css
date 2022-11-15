@@ -806,3 +806,23 @@ td{
 	transform: translate(-50%,-50%);
 	text-align: center;
 }
+
+.ajout-box{
+	width: 100%;
+	color: #fff;
+	position: fixed;
+	top: 60%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	text-align: center;
+}
+
+.ajout-box h1 {
+	font-size: 45px;
+}
+
+.ajout-box p, .ajout-box span {
+	margin: 10px 0 40px;
+	font-size: 14px;
+	color: #fff;
+}

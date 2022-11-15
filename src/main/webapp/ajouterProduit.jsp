@@ -18,7 +18,7 @@
 	
 	<c:choose>
 		<c:when test="${connecte.role == 'admin'}">
-			<div class="text-box">
+			<div class="ajout-box">
 				<div class="signup-form">		
 					<form method="post" action="AjouterProduit">
 						<h1>AJOUTER UN PRODUIT</h1>
