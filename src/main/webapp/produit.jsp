@@ -7,7 +7,7 @@
 	<meta charset="UTF-8">
 	<title>Produits</title>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-	<link rel="shortcut icon" type="png" href="https://cdn.discordapp.com/attachments/1031949427960725555/1039553476449030174/logo.png"/>d
+	<link rel="shortcut icon" type="png" href="https://cdn.discordapp.com/attachments/1031949427960725555/1039553476449030174/logo.png"/>
 	<style>
 		<%@include file="/style.css"%>
 	</style>	
@@ -82,14 +82,16 @@
 					</c:otherwise>
 				</c:choose>
 				
-				<a class="hero-btn" href="/Projet-JEE/ajouterProduit">AJOUTER UN PRODUIT</a>
+				<div class="btn-box">
+					<p><a class="hero-btn" href="/Projet-JEE/ajouterProduit">AJOUTER UN PRODUIT</a></p>
+				</div>
 			</c:when>
 			
 			<c:otherwise>
 				<div class="text-box">
 					<h1>Oups...</h1>
 					<h3>Vous ne pouvez pas accéder à cette page</h3>
-					<a class="hero-btn" href="/Projet-JEE/">RETOUR A L'ACCUEIL</a>
+					<p><a class="hero-btn" href="/Projet-JEE/">RETOUR A L'ACCUEIL</a></p>
 				</div>
 			</c:otherwise>
 		</c:choose>

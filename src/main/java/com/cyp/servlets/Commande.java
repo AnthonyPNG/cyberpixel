@@ -5,25 +5,27 @@ import java.io.IOException;
 import com.cyp.dao.DAOBase;
 import com.cyp.dao.DAOException;
 import com.cyp.dao.DAOFactory;
+import com.cyp.models.User;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class Client
+ * Servlet implementation class Commande
  */
-@WebServlet("/Client")
-public class Client extends HttpServlet {
+@WebServlet("/Commande")
+public class Commande extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	DAOBase daoBase;
 
     /**
      * Default constructor. 
      */
-    public Client() {
+    public Commande() {
         // TODO Auto-generated constructor stub
     }
     
@@ -36,42 +38,29 @@ public class Client extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("connecte");
+		String mail = user.getMail();
+		
 		try {
-			request.setAttribute("clients", daoBase.getListUser());
+			if (user.getRole().equals("admin")) {
+				request.setAttribute("commandes", daoBase.getListCommande());
+			}
+			else {
+				request.setAttribute("commandes", daoBase.getListCommande(mail));
+			}
 		} catch (DAOException e) {
-			request.setAttribute("errClient", e.getMessage());
+			request.setAttribute("errCommande", e.getMessage());
 		}
-		this.getServletContext().getRequestDispatcher("/client.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/commande.jsp").forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int id;
-		int passerCommande;
-		int payerCommande;
-		
-		try {
-			if (request.getParameter("majUser") != null) {
-				id = Integer.parseInt(request.getParameter("majUser"));
-				
-				if (request.getParameter("passerCmd") == null) passerCommande = 0;
-				else passerCommande = Integer.parseInt(request.getParameter("passerCmd"));
-				
-				if (request.getParameter("payerCmd") == null) payerCommande = 0;
-				else payerCommande = Integer.parseInt(request.getParameter("payerCmd"));
-				
-				daoBase.UpdateDroits(id, passerCommande, payerCommande);
-			}
-			if (request.getParameter("supprimerUser") != null) {
-				id = Integer.parseInt(request.getParameter("supprimerUser"));
-				daoBase.removeUser(id);
-			}
-		} catch (DAOException e) {
-			request.setAttribute("errClient", e.getMessage());
-		}
-		response.sendRedirect("/Projet-JEE/client");
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

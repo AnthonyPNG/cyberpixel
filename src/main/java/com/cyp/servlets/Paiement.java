@@ -2,14 +2,17 @@ package com.cyp.servlets;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.sql.Date;
 
 import com.cyp.dao.DAOBase;
 import com.cyp.dao.DAOException;
 import com.cyp.dao.DAOFactory;
 import com.cyp.models.ArticlePanier;
 import com.cyp.models.Cb;
+import com.cyp.models.Commande;
 import com.cyp.models.Produit;
 import com.cyp.models.ShoppingPanier;
+import com.cyp.models.User;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -51,6 +54,8 @@ public class Paiement extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, NumberFormatException {
 		HttpSession session = request.getSession();
+		Commande commande = null;
+		User user = (User) session.getAttribute("connecte");
 		String action = request.getParameter("action");
 		
 		try {
@@ -81,6 +86,15 @@ public class Paiement extends HttpServlet {
 							p.setQuantite(p.getQuantite() - article.getQuantite());
 							daoBase.updateProduitQuantite(p);
 						}
+						
+						// Current Date
+						long millis=System.currentTimeMillis();
+						Date ddate = new Date(millis);
+						commande = new Commande();
+						commande.setMail(user.getMail());
+						commande.setPrix(prix);
+						daoBase.ajouterCommande(commande, ddate);
+
 					}
 					
 					response.sendRedirect("/Projet-JEE/paiementValide");

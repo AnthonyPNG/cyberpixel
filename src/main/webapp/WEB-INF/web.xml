@@ -87,6 +87,15 @@
   </servlet-mapping>
   
   <servlet>
+    <servlet-name>Commande</servlet-name>
+    <servlet-class>com.cyp.servlets.Commande</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Commande</servlet-name>
+    <url-pattern>/commande</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
     <servlet-name>Client</servlet-name>
     <servlet-class>com.cyp.servlets.Client</servlet-class>
   </servlet>

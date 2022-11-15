@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.cyp.models.Cb;
+import com.cyp.models.Commande;
 import com.cyp.models.Produit;
 import com.cyp.models.User;
 
@@ -278,6 +279,7 @@ public class DAOBase {
 				u = new User();
 				u.setNom(result.getString("nom"));
 				u.setPrenom(result.getString("prenom"));
+				u.setMail(result.getString("mail"));
 				u.setRole(result.getString("role"));
 				u.setPasserCommande(result.getByte("passer_commande"));
 				u.setPayerCommande(result.getByte("payer_commande"));
@@ -386,4 +388,90 @@ public class DAOBase {
 			throw new DAOException("Impossible de communiquer avec la base de données");
 		}
 	}
+	
+	// Affiche la liste des commandes pour l'admin
+	public List<Commande> getListCommande() throws DAOException {
+		List<Commande> commandes = new ArrayList<Commande>();
+		Connection connexion = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet result = null;
+			
+		try {
+			connexion = daoFactory.getConnection();
+			preparedStatement = connexion.prepareStatement("SELECT * FROM commande");
+			result = preparedStatement.executeQuery();
+							
+			while (result.next()) {
+				int id = result.getInt("idcommande");
+				String email = result.getString("mail");
+				BigDecimal prix = result.getBigDecimal("prix");
+				Date date = result.getDate("date");
+					
+				Commande commande = new Commande();
+				commande.setIdcommande(id);
+				commande.setMail(email);
+				commande.setPrix(prix);
+				commande.setDate(date);
+					
+				commandes.add(commande);
+			} 
+		} catch (SQLException e) {
+			throw new DAOException("Impossible de communiquer avec la base de données");
+		}
+			
+		return commandes;
+	}
+	
+	// Affiche la liste des commandes pour un utilisateur
+	public List<Commande> getListCommande(String mail) throws DAOException {
+		List<Commande> commandes = new ArrayList<Commande>();
+		Connection connexion = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet result = null;
+		
+		try {
+			connexion = daoFactory.getConnection();
+			preparedStatement = connexion.prepareStatement("SELECT * FROM commande WHERE mail = ?");
+			preparedStatement.setString(1, mail);
+			result = preparedStatement.executeQuery();
+						
+			while (result.next()) {
+				int id = result.getInt("idcommande");
+				String email = result.getString("mail");
+				BigDecimal prix = result.getBigDecimal("prix");
+				Date date = result.getDate("date");
+				
+				Commande commande = new Commande();
+				commande.setIdcommande(id);
+				commande.setMail(email);
+				commande.setPrix(prix);
+				commande.setDate(date);
+				
+				commandes.add(commande);
+			} 
+		} catch (SQLException e) {
+			throw new DAOException("Impossible de communiquer avec la base de données");
+		}
+		
+		return commandes;
+	}
+	
+	// Ajoute une commande une fois le paiement valide
+	public void ajouterCommande(Commande c, Date date) throws DAOException {
+		Connection connexion = null;
+		PreparedStatement preparedStatement = null;	
+			
+		try {
+			connexion = daoFactory.getConnection();
+
+			preparedStatement = connexion.prepareStatement("INSERT INTO commande VALUES (DEFAULT, ?, ?, ?)");
+			preparedStatement.setString(1, c.getMail());
+			preparedStatement.setBigDecimal(2, c.getPrix());
+			preparedStatement.setDate(3, date);
+			preparedStatement.executeUpdate();
+
+			} catch (SQLException e) {
+				throw new DAOException("Impossible de communiquer avec la base de donnees");			
+			}		
+		}
 }

@@ -26,7 +26,6 @@
 			      <form method="post" action="Paiement">			
 			      	<div class="col-50">
 			      		<h1>Paiement en ligne</h1>
-			            <p class="hint-text">Connectez-vous à votre compte</p>
 			            
 			            <c:if test="${not empty errPaiement}">
 			            	<c:out value="${errPaiement}" />

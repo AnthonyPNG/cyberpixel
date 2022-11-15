@@ -52,3 +52,17 @@ INSERT INTO `user` (`idclient`, `nom`, `prenom`, `mail`, `adresse`, `role`, `pas
 (3, 'Dupuit', 'Martin', 'dupuitmart1@yahoo.fr', '350 rue Saint-Guillaume, 75007 Paris', 'client', DEFAULT, DEFAULT, '123456789'),
 (4, 'Rochet', 'Lea', 'learochet.yt@gmail.com', '208 rue au Maire, 75003 Paris', 'client', DEFAULT, 0, 'qwerty0000'),
 (5, 'Laroche', 'Pierre', 'pierre.lrch@gmail.com', '148 rue du 8 mai 1945, 92000 Nanterre', 'client', 0, 0, 'zaza1234');
+
+
+CREATE TABLE `commande` (
+  `idcommande` int(10) NOT NULL AUTO_INCREMENT,
+  `mail` varchar(45) NOT NULL,
+  `prix` decimal(10,2) NOT NULL DEFAULT 0.00,
+  `date` date NOT NULL,
+  PRIMARY KEY (`idcommande`)
+);
+
+INSERT INTO `commande` (`idcommande`, `mail`, `prix`, `date`) VALUES 
+(1, 'admin@cy-tech.fr', 220.94, 2022-10-13),
+(2, 'jean.dupont@gmail.com', 85.97, 2022-09-20),
+(3, 'jean.dupont@gmail.com', 7.99, 2022-10-01);

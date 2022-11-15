@@ -796,3 +796,13 @@ td{
 	margin-bottom: 30px;
 	text-align: center; 
 }
+
+.btn-box{
+	width: 100%;
+	color: #fff;
+	position: fixed;
+	top: 92%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	text-align: center;
+}

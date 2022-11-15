@@ -19,6 +19,7 @@
 					</c:if>
 					
 					<li><a href="/Projet-JEE/boutique"><h2>BOUTIQUE</h2></a></li>
+					<li><a href="/Projet-JEE/commande"><h2>COMMANDES</h2></a></li>
 					<li><a href="/Projet-JEE/contact"><h2>CONTACT</h2></a></li>
 					<li><a href="/Projet-JEE/deconnexion"><h2>SE DECONNECTER</h2></a></li>
 				</ul>

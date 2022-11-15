@@ -19,6 +19,7 @@
 	  --white: #fff;
 	  --thumb: #edf2f4;
 	}
+	<%@include file="/style.css"%>
 </style>
 
 <body>
