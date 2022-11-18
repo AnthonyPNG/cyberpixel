@@ -231,6 +231,45 @@ public class DAOBase {
 		return users;
 	}
 	
+	// Renvoie un utilisateur
+	public List<User> getUser(String mail) throws DAOException {
+		List<User> users = new ArrayList<User>();
+		Connection connexion = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet result = null;
+			
+		try {
+			connexion = daoFactory.getConnection();
+			preparedStatement = connexion.prepareStatement("SELECT * FROM user WHERE mail LIKE ?");
+			preparedStatement.setString(1, "%"+mail+"%");
+			result = preparedStatement.executeQuery();
+
+				
+			while (result.next()) {
+				int id = result.getInt("idclient");
+				String nom = result.getString("nom");
+				String prenom = result.getString("prenom");
+				String email = result.getString("mail");
+				byte passerCommande = result.getByte("passer_commande");
+				byte payerCommande = result.getByte("payer_commande");
+				
+				User user = new User();
+				user.setIdclient(id);
+				user.setNom(nom);
+				user.setPrenom(prenom);
+				user.setMail(email);
+				user.setPasserCommande(passerCommande);
+				user.setPayerCommande(payerCommande);
+				
+				users.add(user);
+			} 
+		} catch (SQLException e) {
+			throw new DAOException("Impossible de communiquer avec la base de données");
+		}
+			
+		return users;
+	}
+	
 	// Inscription : ajoute un utilisateur
 	public void ajouterUser(User u) throws DAOException {
 		Connection connexion = null;
@@ -422,6 +461,40 @@ public class DAOBase {
 		return commandes;
 	}
 	
+	// Recherche les commandes d'un utilisateur pour un admin
+	public List<Commande> getListCommandeForAdmin(String string) throws DAOException {
+		List<Commande> commandes = new ArrayList<Commande>();
+		Connection connexion = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet result = null;
+		
+		try {
+			connexion = daoFactory.getConnection();
+			preparedStatement = connexion.prepareStatement("SELECT * FROM commande WHERE mail LIKE ?");
+			preparedStatement.setString(1, "%"+string+"%");
+			result = preparedStatement.executeQuery();
+						
+			while (result.next()) {
+				int id = result.getInt("idcommande");
+				String email = result.getString("mail");
+				BigDecimal prix = result.getBigDecimal("prix");
+				Date date = result.getDate("date");
+				
+				Commande commande = new Commande();
+				commande.setIdcommande(id);
+				commande.setMail(email);
+				commande.setPrix(prix);
+				commande.setDate(date);
+				
+				commandes.add(commande);
+			} 
+		} catch (SQLException e) {
+			throw new DAOException("Impossible de communiquer avec la base de données");
+		}
+		
+		return commandes;
+	}
+	
 	// Affiche la liste des commandes pour un utilisateur
 	public List<Commande> getListCommande(String mail) throws DAOException {
 		List<Commande> commandes = new ArrayList<Commande>();
@@ -470,8 +543,9 @@ public class DAOBase {
 			preparedStatement.setDate(3, date);
 			preparedStatement.executeUpdate();
 
-			} catch (SQLException e) {
-				throw new DAOException("Impossible de communiquer avec la base de donnees");			
-			}		
-		}
+		} catch (SQLException e) {
+			throw new DAOException("Impossible de communiquer avec la base de donnees");			
+		}		
+	}
+	
 }

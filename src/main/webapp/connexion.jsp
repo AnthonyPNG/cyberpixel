@@ -19,10 +19,14 @@
 		<div class="signup-form">	
 			<form method="post" action="Connexion">			
 				<h1>SE CONNECTER</h1>
-				<p class="hint-text">Connectez-vous à votre compte</p>
+				
+				<c:if test="${empty errConnexion}">
+					<p class="hint-text">Connectez-vous à votre compte</p>
+				</c:if>
+				
 			
 				<c:if test="${not empty errConnexion}">
-					<p><c:out value="${errConnexion}" /></p>
+					<p class="hint-text"><c:out value="${errConnexion}" /></p>
 				</c:if>
 				
 				<div class="form-group">

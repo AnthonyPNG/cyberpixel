@@ -19,10 +19,12 @@
 		<div class="signup-form">		
 			<form method="post" action="Inscription">
 				<h1>S'INSCRIRE</h1>
-				<p class="hint-text">Créez votre compte. C'est gratuit et cela ne prend qu'une minute</p>
-			
+				<c:if test="${empty errInscription}">
+					<p class="hint-text">Créez votre compte. C'est gratuit et cela ne prend qu'une minute</p>
+				</c:if>
+							
 				<c:if test="${not empty errInscription}">
-					<p><c:out value="${errInscription}" /></p>
+					<p class="hint-text"><c:out value="${errInscription}" /></p>
 				</c:if>
 				
 				<div class="form-group">

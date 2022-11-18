@@ -105,6 +105,24 @@
   </servlet-mapping>
   
   <servlet>
+    <servlet-name>GetClient</servlet-name>
+    <servlet-class>com.cyp.servlets.GetClient</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetClient</servlet-name>
+    <url-pattern>/getClient</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>GetClientCommande</servlet-name>
+    <servlet-class>com.cyp.servlets.GetClientCommande</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetClientCommande</servlet-name>
+    <url-pattern>/getClientCommande</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
     <servlet-name>Produit</servlet-name>
     <servlet-class>com.cyp.servlets.Produit</servlet-class>
   </servlet>

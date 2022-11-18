@@ -826,3 +826,26 @@ td{
 	font-size: 14px;
 	color: #fff;
 }
+
+.search-form{ 
+	width: 400px;
+	height: 100px;
+	margin: 0 auto;
+}
+
+.search-form form{  
+	color: #999;
+    margin-bottom: 15px;
+    background: none;
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/* Boite dinfo */
+.search-form .form-group{ 
+	margin-bottom: 20px;
+	display: flex;
+    justify-content: center;
+}
